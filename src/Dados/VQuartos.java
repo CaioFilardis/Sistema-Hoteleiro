@@ -11,7 +11,7 @@ package Dados;
 public class VQuartos {
     
     private int idQuartos;
-    private String numer;
+    private String numero;
     private String andar;
     private String descricao;
     private String caracteristicas;
@@ -20,9 +20,9 @@ public class VQuartos {
     private String tipoQuartos;
 
     // Explicitando construtor
-    public VQuartos(int idQuartos, String numer, String andar, String descricao, String caracteristicas, double valorDiaria, String estado, String tipoQuartos) {
+    public VQuartos(int idQuartos, String numero, String andar, String descricao, String caracteristicas, double valorDiaria, String estado, String tipoQuartos) {
         this.idQuartos = idQuartos;
-        this.numer = numer;
+        this.numero = numero;
         this.andar = andar;
         this.descricao = descricao;
         this.caracteristicas = caracteristicas;
@@ -35,6 +35,7 @@ public class VQuartos {
         
     }
 
+    // idQuartos
     public int getIdQuartos() {
         return idQuartos;
     }
@@ -43,14 +44,16 @@ public class VQuartos {
         this.idQuartos = idQuartos;
     }
 
-    public String getNumer() {
-        return numer;
+    // numeros
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumer(String numer) {
-        this.numer = numer;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
+    // andar
     public String getAndar() {
         return andar;
     }
@@ -59,6 +62,7 @@ public class VQuartos {
         this.andar = andar;
     }
 
+    // descricao
     public String getDescricao() {
         return descricao;
     }
@@ -67,6 +71,7 @@ public class VQuartos {
         this.descricao = descricao;
     }
 
+    // caracteristicas
     public String getCaracteristicas() {
         return caracteristicas;
     }
@@ -75,6 +80,7 @@ public class VQuartos {
         this.caracteristicas = caracteristicas;
     }
 
+    // valorDiaria
     public double getValorDiaria() {
         return valorDiaria;
     }
@@ -82,7 +88,8 @@ public class VQuartos {
     public void setValorDiaria(double valorDiaria) {
         this.valorDiaria = valorDiaria;
     }
-
+    
+    // estado
     public String getEstado() {
         return estado;
     }
@@ -91,6 +98,7 @@ public class VQuartos {
         this.estado = estado;
     }
 
+    // tipoQuartos
     public String getTipoQuartos() {
         return tipoQuartos;
     }
@@ -98,8 +106,4 @@ public class VQuartos {
     public void setTipoQuartos(String tipoQuartos) {
         this.tipoQuartos = tipoQuartos;
     }
-    
-    
-    
-    
 }
