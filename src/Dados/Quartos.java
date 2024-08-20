@@ -1,45 +1,46 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dados;
 
 /**
  *
- * @author Hugo
+ * @author Caio
  */
 public class Quartos {
-    private int idquartos;
+    
+    private int idQuartos;
     private String numero;
     private String andar;
     private String descricao;
     private String caracteristicas;
-    private Double valordiaria;
+    private Double valorDiaria;
     private String estado;
-    private String tipoquarto;
-
-    public Quartos(int idquartos, String numero, String andar, String descricao, String caracteristicas, Double valordiaria, String estado, String tipoquarto) {
-        this.idquartos = idquartos;
+    private String tipoQuarto;
+    
+    public Quartos(int idQuartos, String numero, String andar, String descricao, String caracteristicas, 
+                double valorDiaria, String estado, String tipoQuarto) {
+        this.idQuartos = idQuartos;
         this.numero = numero;
         this.andar = andar;
         this.descricao = descricao;
         this.caracteristicas = caracteristicas;
-        this.valordiaria = valordiaria;
+        this.valorDiaria = valorDiaria;
         this.estado = estado;
-        this.tipoquarto = tipoquarto;
+        this.tipoQuarto = tipoQuarto;
     }
-
+    
     public Quartos() {
         
     }
 
-    public int getIdquartos() {
-        return idquartos;
+    public int getIdQuartos() {
+        return idQuartos;
     }
 
-    public void setIdquartos(int idquartos) {
-        this.idquartos = idquartos;
+    public void setIdQuartos(int idQuartos) {
+        this.idQuartos = idQuartos;
     }
 
     public String getNumero() {
@@ -74,12 +75,12 @@ public class Quartos {
         this.caracteristicas = caracteristicas;
     }
 
-    public Double getValordiaria() {
-        return valordiaria;
+    public Double getValorDiaria() {
+        return valorDiaria;
     }
 
-    public void setValordiaria(Double valordiaria) {
-        this.valordiaria = valordiaria;
+    public void setValorDiaria(Double valorDiaria) {
+        this.valorDiaria = valorDiaria;
     }
 
     public String getEstado() {
@@ -90,11 +91,11 @@ public class Quartos {
         this.estado = estado;
     }
 
-    public String getTipoquarto() {
-        return tipoquarto;
+    public String getTipoQuarto() {
+        return tipoQuarto;
     }
 
-    public void setTipoquarto(String tipoquarto) {
-        this.tipoquarto = tipoquarto;
+    public void setTipoQuarto(String tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
     }
 }
