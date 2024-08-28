@@ -23,6 +23,7 @@ public class TabelaClientes {
     private Conexao mysql = new Conexao();
     private Connection cn = mysql.conectar();
     private String sSQL = "";
+    private String sSQL2 = "";
     public Integer totalregistros;
     
      public DefaultTableModel mostrar(String buscar) {
@@ -75,16 +76,33 @@ public class TabelaClientes {
         try {
             
             PreparedStatement pst = cn.prepareStatement(sSQL);
+            PreparedStatement pst2 = cn.prepareStatement(sSQL2);
             pst.setString(1, dts.getNome());
-            pst.setString(2, dts.getDescricao());
-            pst.setString(3, dts.getUnidadeDeMedida());
-            pst.setDouble(4, dts.getValor());
+            pst.setString(2, dts.getPai());
+            pst.setString(3, dts.getMae());
+            pst.setString(4, dts.getTipoDocumento());
+            pst.setString(5, dts.getCpf());
+            pst.setString(6, dts.getEndereco());
+            pst.setString(7, dts.getTelefone());
+            pst.setString(8, dts.getEmail());
             
+            pst2.setString(1, dts.getCodigo());
+            
+            
+            
+           
             
             int n = pst.executeUpdate();
             
             if (n != 0){
-                return true;
+                
+                int n2 = pst2.executeUpdate();
+                if (n2 != 0){
+                    return true;
+                }
+                else {
+                    return false;
+                }   
             }
             else {
                 return false;
@@ -96,54 +114,99 @@ public class TabelaClientes {
         }
     }
      
-    public boolean editar (Produtos dts){
+    public boolean editar (Clientes dts){
         
-        sSQL="update tb_produtos set nome=?, descricao=?, unidade_medida=?, preco_venda=?"
-                + "where id_produto=?";
+        sSQL="update tb_pessoas set nome=?, nome_pai=?, nome_mae=?, tipo_documento=?, num_documento=?, endereco=?, telefone=?, email=? "
+                + "where id_pessoa=?";
         
-               
+        sSQL="update tb_clientes set codigo_clientes=?"
+                + "where id_pessoa=?";
+        
         try {
-            PreparedStatement pst = cn.prepareStatement(sSQL);
-            pst.setString(1, dts.getNome());
-            pst.setString(2, dts.getDescricao());
-            pst.setString(3, dts.getUnidadeDeMedida());
-            pst.setDouble(4, dts.getValor());
-            pst.setInt(5, dts.getId());
             
-             int n = pst.executeUpdate();
-             
-            if (n != 0) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        catch (SQLException e) {
-             JOptionPane.showConfirmDialog(null, e);
-         return false;
-        }
-    }
-    
-    public boolean deletar (Produtos dts){
-        
-        sSQL = "delete from tb_produtos where id_produto=?";
-        
-        try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
-            pst.setInt(1, dts.getId());
+            PreparedStatement pst2 = cn.prepareStatement(sSQL2);
+            pst.setString(1, dts.getNome());
+            pst.setString(2, dts.getPai());
+            pst.setString(3, dts.getMae());
+            pst.setString(4, dts.getTipoDocumento());
+            pst.setString(5, dts.getCpf());
+            pst.setString(6, dts.getEndereco());
+            pst.setString(7, dts.getTelefone());
+            pst.setString(8, dts.getEmail());
+            pst.setInt(9, dts.getIdPessoa());
+            
+            pst2.setString(1, dts.getCodigo());
+            pst2.setInt(2, dts.getIdPessoa());
+            
+            
+            
+           
+            
             int n = pst.executeUpdate();
             
-            if (n != 0) {
-                return true;
+            if (n != 0){
+                
+                int n2 = pst2.executeUpdate();
+                if (n2 != 0){
+                    return true;
+                }
+                else {
+                    return false;
+                }   
             }
             else {
                 return false;
-            }
+            }    
         }
-        catch (SQLException e) {
+        catch (SQLException e){
              JOptionPane.showConfirmDialog(null, e);
              return false;
         }
+    }
+        
+               
+        
+    public boolean deletar (Clientes dts){
+        
+        sSQL = "delete from tb_clientes where id_pessoa=?";
+        sSQL2 = "delete from tb_pessoas where id_pessoa=?";
+        
+        try {
+            
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            PreparedStatement pst2 = cn.prepareStatement(sSQL2);
+           
+            // Pegar o registro da primeira linha da tabela
+            pst.setInt(1, dts.getIdPessoa());
+            
+       
+            pst2.setInt(1, dts.getIdPessoa());
+            
+            
+            
+           
+            
+            int n = pst.executeUpdate();
+            
+            if (n != 0){
+                
+                int n2 = pst2.executeUpdate();
+                if (n2 != 0){
+                    return true;
+                }
+                else {
+                    return false;
+                }   
+            }
+            else {
+                return false;
+            }    
+        }
+        catch (SQLException e){
+             JOptionPane.showConfirmDialog(null, e);
+             return false;
+        }
+        
     }
 }
