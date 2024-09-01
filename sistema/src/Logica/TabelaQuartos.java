@@ -40,21 +40,21 @@ public class TabelaQuartos {
             ResultSet rs=st.executeQuery(sSQL);
             
             while(rs.next()){
-               registro [0]=rs.getString("id_quartos");
-               registro [1]=rs.getString("numero");
-               registro [2]=rs.getString("andar");
-               registro [3]=rs.getString("descricao");
-               registro [4]=rs.getString("caracteristicas");
-               registro [5]=rs.getString("preco_diaria");
-               registro [6]=rs.getString("estado");
-               registro [7]=rs.getString("tipo_quarto"); 
+               registro [0] = rs.getString("id_quartos");
+               registro [1] = rs.getString("numero");
+               registro [2] = rs.getString("andar");
+               registro [3] = rs.getString("descricao");
+               registro [4] = rs.getString("caracteristicas");
+               registro [5] = rs.getString("preco_diaria");
+               registro [6] = rs.getString("estado");
+               registro [7] = rs.getString("tipo_quarto"); 
 
                totalregistros = totalregistros +1;
                modelo.addRow(registro);
             }
             return modelo;
         }
-        catch (SQLException e){
+        catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e);
             return null;
         }

@@ -40,18 +40,18 @@ public class TabelaProdutos {
             ResultSet rs = st.executeQuery(sSQL);
             
             while(rs.next()){
-               registro [0]=rs.getString("id_produto");
-               registro [1]=rs.getString("nome");
-               registro [2]=rs.getString("descricao");
-               registro [3]=rs.getString("unidade_medida");
-               registro [4]=rs.getString("preco_venda");
+               registro [0] = rs.getString("id_produto");
+               registro [1] = rs.getString("nome");
+               registro [2] = rs.getString("descricao");
+               registro [3] = rs.getString("unidade_medida");
+               registro [4] = rs.getString("preco_venda");
                
                totalregistros = totalregistros +1;
                modelo.addRow(registro);
             }
             return modelo;
         }
-        catch (SQLException e){
+        catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e);
             return null;
         }
