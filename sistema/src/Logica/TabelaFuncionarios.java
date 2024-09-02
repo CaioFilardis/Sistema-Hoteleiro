@@ -24,7 +24,7 @@ public class TabelaFuncionarios {
     private Connection cn = mysql.conectar();
     private String sSQL = "";
     private String sSQL2 = "";
-    public Integer totalregistros;
+    public Integer totalRegistros;
     
     
     public DefaultTableModel mostrar(String buscar){
@@ -34,7 +34,7 @@ public class TabelaFuncionarios {
     String[] titulos = {"ID", "Nome", "Nome Pai", "Nome Mãe", "Documento", 
         "Numero DOC", "Endereço", "Telefone", "Email", "Salário", "Acesso", "Login", "Senha", "Estado"};
     String[] registro = new String[14]; // registros
-    totalregistros = 0;
+    totalRegistros = 0;
     
     modelo = new DefaultTableModel(null, titulos);
    sSQL = "select p.id_pessoa,p.nome_pessoa,p.nome_pai,p.nome_mae,p.tipo_documento,p.num_documento,"
@@ -63,7 +63,7 @@ public class TabelaFuncionarios {
                registro [13] = rs.getString("estado");
                
                 
-               totalregistros = totalregistros +1;
+               totalRegistros = totalRegistros +1;
                modelo.addRow(registro);
         }
         return modelo;
@@ -123,10 +123,10 @@ public class TabelaFuncionarios {
     
     public boolean editar (Funcionarios dts){
         
-        sSQL = "update tb_produtos set nome_pessoa=?, nome_pai=?, nome_mae=?, tipo_documento=?, num_documento=?, endereco=?, telefone=?, email=?" +
+        sSQL = "update tb_pessoas set nome_pessoa=?, nome_pai=?, nome_mae=?, tipo_documento=?, num_documento=?, endereco=?, telefone=?, email=?" +
                 "where id_pessoa=?";
-        sSQL2 = "update tb_funcionarios set salario=?, acesso=?, login=?, password=?, estado=?" +
-                "where id_pessoa=?";
+        sSQL2 = "update tb_funcionarios set salario=?, acesso=?, login=?, password=?, estado=?" 
+                + "where id_pessoa=?";
                
         try {
             
@@ -206,6 +206,45 @@ public class TabelaFuncionarios {
         } catch (Exception e){
              JOptionPane.showConfirmDialog(null, e);
              return false;
+        }
+    }
+    
+    
+    public DefaultTableModel Login(String login, String password) {
+        
+        DefaultTableModel modelo;
+        String[] titulos = {"ID", "Nome", "Nome Pai", "Nome Mãe", "Acesso", "Login", "Senha", "Estado"};
+        String[] registros = new String[8];
+        totalRegistros = 0;
+        
+        modelo = new DefaultTableModel(null, titulos);
+        sSQL = "select p.id_pessoa,p.nome_pessoa,p.nome_pai,p.nome_mae,"
+                + "f.acesso,f.login,f.password,f.estado from tb_pessoas p inner join tb_funcionarios f "
+                + "on p.id_pessoa=f.id_pessoa where f.login='" 
+                + login + "' and f.password='" + password + "' and f.estado='A'";
+        
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+            
+            while (rs.next()) {
+               registros [0] = rs.getString("id_pessoa");
+               registros [1] = rs.getString("nome_pessoa");
+               registros [2] = rs.getString("nome_pai");
+               registros [3] = rs.getString("nome_mae");
+               registros [4] = rs.getString("acesso");
+               registros [5] = rs.getString("login");
+               registros [6] = rs.getString("password");
+               registros [7] = rs.getString("estado");
+                
+               totalRegistros = totalRegistros +1;
+               modelo.addRow(registros);
+            }
+            return modelo;
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
         }
     }
 }
