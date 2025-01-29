@@ -5,7 +5,7 @@
 package apresentacao;
 
 import javax.swing.JOptionPane;
-//import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * @author Caio
@@ -71,11 +71,11 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
         txt_numero.setText("");
     }
     
-   /* void mostrar (String buscar){
+   void mostrar (String buscar){
         
         try {
             DefaultTableModel modelo;
-            //TabelaQuartos func=new TabelaQuartos();
+            TabelaQuartos func = new TabelaQuartos();
             modelo = func.mostrar(buscar);
             TB_lista.setModel(modelo);
             ocultar_coluna();
@@ -85,7 +85,7 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
         catch (Exception e){
             JOptionPane.showConfirmDialog(null, e);
         }
-    }*/
+    }
 
     /*
      * This method is called from within the constructor to initialize the form.
@@ -486,7 +486,7 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
             return;
         }
 
-       /* Quartos dts = new Quartos();
+       Quartos dts = new Quartos();
         TabelaQuartos func = new TabelaQuartos();
 
         dts.setNumero(txt_numero.getText());
@@ -518,7 +518,7 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
                 mostrar("");
                 desativar();
             }
-        }*/
+        }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
@@ -555,7 +555,7 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
     }//GEN-LAST:event_btn_sairActionPerformed
 
     private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
-        /*if (!txt_id_quarto.getText().equals("")) {
+        if (!txt_id_quarto.getText().equals("")) {
             int confirmacao = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir este registro", "Exluir", 2);
             
             if (confirmacao == 0) {
@@ -570,7 +570,7 @@ public class FormularioQuartos extends javax.swing.JInternalFrame { // link o me
     }//GEN-LAST:event_btn_apagarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        mostrar(txt_pesquisar.getText());*/
+        mostrar(txt_pesquisar.getText());
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     
